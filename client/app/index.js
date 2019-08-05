@@ -23,6 +23,7 @@ render((
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/helloworld" component={HelloWorld}/>
+        <Route path="/signin/callback" component={HelloWorld}/>
         <Route component={NotFound}/>
       </Switch>
     </App>

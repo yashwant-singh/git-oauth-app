@@ -6,7 +6,7 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-
+const request = require('superagent');
 const config = require('../config/config');
 const webpackConfig = require('../webpack.config');
 
@@ -57,6 +57,33 @@ if (isDev) {
     res.end();
   });
 }
+
+app.get('signin/callback', (req, res, next)=>{
+  console.log("Callback");
+  const { query } = req;
+  const code = query;
+  if(!code) {
+	console.log("code not defined");
+      return res.send({
+        success: false, 
+        message: 'Error no code'
+      });
+  }
+	console.log("POST tokken");
+// POST
+request
+.post('https://github.com/login/oauth/access_token')
+.send({
+  client_id: 'e08ae3c85ac84e4379aa',
+  client_secret: 'e55bbce0d31af0d1213bd18a4adb8f33a0d6cef8',
+  code: code, 
+})
+.set('Accept', 'application/json')
+.then(result => {
+  const data = result.body;
+  result.send(data);
+});
+});
 
 app.listen(port, '0.0.0.0', (err) => {
   if (err) {

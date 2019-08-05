@@ -99,7 +99,10 @@ class Home extends Component {
           )) }
         </ul>
 
+        {/* signin/callback */}
         <button onClick={this.newCounter}>New counter</button>
+        <br />
+        <a href="https://github.com/login/oauth/access_token?client_id=e08ae3c85ac84e4379aa"> Sign In with github</a>
       </>
     );
   }
