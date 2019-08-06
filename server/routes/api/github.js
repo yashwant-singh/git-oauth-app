@@ -1,4 +1,5 @@
 const request = require('superagent');
+const fetch = require('node-fetch');
 module.exports = app => {
     app.get('/user/home', (req, res, next)=>{
         const { query } = req;
@@ -33,17 +34,34 @@ module.exports = app => {
 	});
     });
 
-    app.get('/userDetails', (req, res, next) => {
+    app.get('/specificuserDetails', (req, res, next) => {
     	const accessToken = 'f08a5a98088866ba24f222c8fd6b1a17fee9cca2';
+	const url = 'https://api.github.com/users/yashwant-singh';
+	fetch(url)
+	.then(resp => resp.json())
+	.then(data=> {
+		console.log('Data :', data);
+		res.send(data);
+	});
+    });
 
-	request
-	.get('https://api.github.com/users/yashwant-singh')
-	//.get('https://api.github.com/user')
-	// .set('Authorization', 'token ', + accessToken)
-	 .then(function(result)	{
-		 console.log('result :', result);
-	      // res.send(result.body);
-	 });
+   app.get('/userDetails', (req, res, next) => {
+    	const accessToken = 'f08a5a98088866ba24f222c8fd6b1a17fee9cca2';
+	const url = 'https://api.github.com/user';
+	
+	const headers = {
+		method: 'get',
+		headers: {
+			'Authorize': 'token ', accessToken
+		}
+	}
+	console.log('Fetching user details');
+	fetch(url, { headers: {'Authorization': 'token c8f5b2990df4ad75145bc21be2c75f04f981a286'}})
+	.then(resp => resp.json())
+	.then(data=> {
+		console.log('Data :', data);
+		res.send(data);
+	});
     });
 
    
