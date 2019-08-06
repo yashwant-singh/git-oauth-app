@@ -11,7 +11,8 @@ import {
 import App from './components/App/App';
 import NotFound from './components/App/NotFound';
 
-import Home from './components/Home/Home';
+import Login from './components/Home/Login';
+import UserHome from './components/Home/UserHome';
 
 import HelloWorld from './components/HelloWorld/HelloWorld';
 
@@ -21,10 +22,7 @@ render((
   <Router>
     <App>
       <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/helloworld" component={HelloWorld}/>
-        <Route path="/signin/callback" component={HelloWorld}/>
-        <Route component={NotFound}/>
+        <Route exact path="/" component={Login}/>
       </Switch>
     </App>
   </Router>

@@ -58,10 +58,10 @@ if (isDev) {
   });
 }
 
-app.get('signin/callback', (req, res, next)=>{
-  console.log("Callback");
+app.get('/user/home', (req, res, next)=>{
   const { query } = req;
   const code = query;
+  console.log("Callback code ", code);
   if(!code) {
 	console.log("code not defined");
       return res.send({
