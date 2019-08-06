@@ -23,6 +23,7 @@ render((
     <App>
       <Switch>
         <Route exact path="/" component={Login}/>
+        <Route exact path="/user/home" component={UserHome}/>
       </Switch>
     </App>
   </Router>
