@@ -24,5 +24,7 @@ Development (Webpack dev server) mode:
 
 ```shell
 npm run start:dev
-```
+or
+node server
+
 # git-oauth-app
