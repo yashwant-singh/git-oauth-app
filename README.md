@@ -6,6 +6,8 @@
 - [Node.js](https://nodejs.org/en/) 6+
 
 ```shell
+git clone https://github.com/yashwant-singh/git-oauth-app.git
+cd git-oauth-app
 npm install
 ```
 
