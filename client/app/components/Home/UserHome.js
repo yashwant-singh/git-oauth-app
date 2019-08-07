@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class UserHome extends React.Component {
 	constructor(props) {
 		super(props);
@@ -13,16 +14,19 @@ class UserHome extends React.Component {
 			history: '',
 			search_text:''
 		};
+
+		const port  = process.env.PORT || 8080;
+		this.host = 'http://0.0.0.0:'+port;
 	}
 
 	componentDidMount() {
 		const code = this.props.location.search.split('?')[1].split('=')[1];
-		const url = 'http://127.0.0.1:8080/fetch_access_token?code='+ code;
+		const url = this.host+'/fetch_access_token?code='+ code;
 		fetch(url)
 		.then(resp=>resp.json())
 		.then(data=>{
 		   this.setState({'auth_key': data})
-		   const profileUrl = 'http://127.0.0.1:8080/fetch_profile?access_token='+ data.access_token;
+		   const profileUrl = this.host+'/fetch_profile?access_token='+ data.access_token;
 		   fetch(profileUrl)
 		   .then(resp=>resp.json())
 		   .then(data=>{
