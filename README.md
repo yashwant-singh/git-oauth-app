@@ -12,9 +12,9 @@ npm install
 
 ## Running
 
-##Make sure to add a `config.js` file in the `config` folder. See the example there for more details.
+## Make sure to add a `config.js` file in the `config` folder. See the example there for more details.
 
-Production mode:
+## Production mode:
 
 
 Development (Webpack dev server) mode:
