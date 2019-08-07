@@ -16,9 +16,6 @@ npm install
 
 Production mode:
 
-```shell
-## npm start
-```
 
 Development (Webpack dev server) mode:
 
